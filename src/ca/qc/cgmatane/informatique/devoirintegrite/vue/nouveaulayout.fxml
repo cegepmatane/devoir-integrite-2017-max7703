@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.qc.cgmatane.informatique.devoirintegrite.controler.TodoControler">
+   <children>
+      <TextField fx:id="idTodoTexte" layoutX="193.0" layoutY="41.0" prefHeight="25.0" prefWidth="111.0" promptText="Todo ID" />
+      <Label layoutX="227.0" layoutY="20.0" text="Todo ID" />
+      <Button fx:id="RechercherTodoBouton" layoutX="190.0" layoutY="72.0" mnemonicParsing="false" onAction="#lireTodo" prefHeight="25.0" prefWidth="120.0" text="Rechercher" />
+      <Button fx:id="SurprimerTodoBouton" layoutX="190.0" layoutY="103.0" mnemonicParsing="false" onAction="#effacerTodo" prefHeight="25.0" prefWidth="120.0" text="Supprimer" />
+      <Button fx:id="MettreAJourTodoBouton" layoutX="474.0" layoutY="103.0" mnemonicParsing="false" onAction="#modifierTodo" prefHeight="25.0" prefWidth="172.0" text="Mettre à jour" />
+      <Button fx:id="ajouterTodoBouton" layoutX="8.0" layoutY="156.0" mnemonicParsing="false" onAction="#ajouterTodo" prefHeight="25.0" prefWidth="172.0" text="Ajouter Todo" />
+      <TextField fx:id="nouveauTitre" layoutX="347.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" promptText="Nouveau Titre" />
+      <Label layoutX="349.0" layoutY="31.0" text="Nouveau Titre" />
+      <VBox layoutX="90.0" layoutY="24.0" prefHeight="120.0" prefWidth="86.0" spacing="4.0">
+         <children>
+            <TextField fx:id="titreTexte" prefHeight="25.0" prefWidth="79.0" promptText="Titre" />
+            <TextField fx:id="descriptionTexte" prefHeight="25.0" prefWidth="79.0" promptText="Description" />
+            <TextField fx:id="idPersonneTexte" prefHeight="25.0" prefWidth="79.0" promptText="Id personne" />
+            <TextField fx:id="dateTexte" layoutX="10.0" layoutY="68.0" prefHeight="25.0" prefWidth="79.0" promptText="Date" />
+         </children>
+      </VBox>
+      <VBox layoutX="9.0" layoutY="28.0" prefHeight="111.0" prefWidth="67.0" spacing="12.0">
+         <children>
+            <Label text="Titre" />
+            <Label text="Description" />
+            <Label prefHeight="15.0" prefWidth="65.0" text="Id Pers." />
+            <Label layoutX="10.0" layoutY="68.0" prefHeight="15.0" prefWidth="65.0" text="Date" />
+         </children>
+      </VBox>
+      <Separator layoutY="14.0" prefHeight="4.0" prefWidth="600.0" />
+      <Separator layoutX="184.0" layoutY="14.0" orientation="VERTICAL" prefHeight="178.0" prefWidth="3.0" />
+      <TableView fx:id="todoTable" editable="true" layoutX="187.0" layoutY="197.0" prefHeight="311.0" prefWidth="688.0" tableMenuButtonVisible="true">
+        <columns>
+            <TableColumn fx:id="idColonne" prefWidth="57.0" text="Id" />
+          <TableColumn fx:id="titreColonne" prefWidth="75.0" text="Titre" />
+          <TableColumn fx:id="descriptionColonne" prefWidth="140.0" text="Description" />
+            <TableColumn fx:id="idPersonneColonne" prefWidth="103.0" text="Id Personne" />
+            <TableColumn fx:id="dateColonne" prefWidth="82.0" text="Date" />
+            <TableColumn fx:id="finiColonne" prefWidth="56.0" text="Fini" />
+        </columns>
+      </TableView>
+      <Button fx:id="ActualiserTableBouton" layoutX="21.0" layoutY="287.0" mnemonicParsing="false" onAction="#listerTousLesTodos" prefHeight="98.0" prefWidth="147.0" text="Actualiser/Afficher table" />
+      <TextField fx:id="nouvelleIdPersonne" layoutX="608.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" promptText="Id Personne" />
+      <TextField fx:id="nouvelleDescription" layoutX="474.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" promptText="Description" />
+      <TextField fx:id="nouvelleDate" layoutX="734.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" promptText="Nouvelle Date" />
+      <Label layoutX="474.0" layoutY="31.0" text="Nouvelle Description" />
+      <Label layoutX="608.0" layoutY="31.0" text="Nouveau Id Personne" />
+      <Label layoutX="740.0" layoutY="31.0" text="Nouvelle Date" />
+      <Separator layoutX="314.0" layoutY="14.0" orientation="VERTICAL" prefHeight="178.0" prefWidth="3.0" />
+      <Separator layoutX="5.0" layoutY="192.0" prefHeight="4.0" prefWidth="868.0" />
+   </children>
+</AnchorPane>

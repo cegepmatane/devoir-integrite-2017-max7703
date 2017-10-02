@@ -1,47 +1,39 @@
 package ca.qc.cgmatane.informatique.devoirintegrite;
 
-import java.util.Iterator;
-import java.util.List;
 
-import ca.qc.cgmatane.informatique.devoirintegrite.accesseur.PersonnesDAO;
-import ca.qc.cgmatane.informatique.devoirintegrite.accesseur.TodoDAO;
-import ca.qc.cgmatane.informatique.devoirintegrite.modele.Personne;
-import ca.qc.cgmatane.informatique.devoirintegrite.modele.Todo;
+import java.io.IOException;
 
-public class DevoirIntegrite {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-	public static void main(String[] args) {
-		// TODO Stub de la méthode généré automatiquement
-		
-		TodoDAO accesseurTodo = new TodoDAO();
-		List<Todo> listeTodos = accesseurTodo.listerTousLesTodos();
-		System.out.println("Nombre de Todos " + listeTodos.size());
-		
-		for(Iterator<Todo> visiteurTodos = listeTodos.iterator(); visiteurTodos.hasNext(); )
-		{
-			Todo todo = visiteurTodos.next();
-			System.out.println("todo " + todo.getTitre() + " " + todo.getDescription() );
-		}	
-		
-		Todo todo = accesseurTodo.lireTodo(2);
-		//accesseurTodo.ajouterTodo(todo);
-		System.out.println("Le todo 2 est " + todo.getTitre());
-		
-		
-		
-		PersonnesDAO accesseurPersonnes = new PersonnesDAO();
-		List<Personne> listePersonnes = accesseurPersonnes.listerToutesLesPersonnes();
-		System.out.println("Nombre de Personnes " + listePersonnes.size());
-		
-		for(Iterator<Personne> visiteurPersonnes = listePersonnes.iterator(); visiteurPersonnes.hasNext(); )
-		{
-			Personne personne = visiteurPersonnes.next();
-			System.out.println("personne " + personne.getNom() + " " + personne.getPrenom() );
-		}	
-		
-		Personne personne = accesseurPersonnes.lirePersonne(2);
-		//accesseurTodo.ajouterTodo(todo);
-		System.out.println("La personne 2 est " + personne.getNom());
-	}
+public class DevoirIntegrite extends Application {
 
+    private Stage primaryStage;
+
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        this.primaryStage = primaryStage;
+
+        this.primaryStage.setTitle("Devoir Integrité");
+
+        initialisationLayout();
+    }
+
+    public void initialisationLayout() throws IOException {
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(DevoirIntegrite.class.getResource("vue/nouveaulayout.fxml"));
+        AnchorPane todoVuePrincipal = (AnchorPane) loader.load();
+
+        Scene scene = new Scene(todoVuePrincipal, 900, 510); 
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
