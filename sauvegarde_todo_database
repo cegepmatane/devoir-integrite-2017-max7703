@@ -1,0 +1,218 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 9.6.5
+
+-- Started on 2017-10-02 14:44:03
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 12387)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2143 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 186 (class 1259 OID 24624)
+-- Name: personnes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE personnes (
+    id_personne bigint NOT NULL,
+    nom text,
+    prenom text,
+    nombre_de_todo_fait integer
+);
+
+
+ALTER TABLE personnes OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 24622)
+-- Name: personnes_id_personne_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE personnes_id_personne_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE personnes_id_personne_seq OWNER TO postgres;
+
+--
+-- TOC entry 2144 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: personnes_id_personne_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE personnes_id_personne_seq OWNED BY personnes.id_personne;
+
+
+--
+-- TOC entry 188 (class 1259 OID 24677)
+-- Name: todo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE todo (
+    id_todo bigint NOT NULL,
+    titre text,
+    description text,
+    date text,
+    fini text,
+    id_personne bigint
+);
+
+
+ALTER TABLE todo OWNER TO postgres;
+
+--
+-- TOC entry 187 (class 1259 OID 24675)
+-- Name: todo_id_todo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE todo_id_todo_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE todo_id_todo_seq OWNER TO postgres;
+
+--
+-- TOC entry 2145 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: todo_id_todo_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE todo_id_todo_seq OWNED BY todo.id_todo;
+
+
+--
+-- TOC entry 2009 (class 2604 OID 24627)
+-- Name: personnes id_personne; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY personnes ALTER COLUMN id_personne SET DEFAULT nextval('personnes_id_personne_seq'::regclass);
+
+
+--
+-- TOC entry 2010 (class 2604 OID 24680)
+-- Name: todo id_todo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY todo ALTER COLUMN id_todo SET DEFAULT nextval('todo_id_todo_seq'::regclass);
+
+
+--
+-- TOC entry 2134 (class 0 OID 24624)
+-- Dependencies: 186
+-- Data for Name: personnes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY personnes (id_personne, nom, prenom, nombre_de_todo_fait) FROM stdin;
+2	Damoneville	Nicolas	3
+1	Szaja	Maxime	5
+3	Chauffourier	Kelyan	1
+\.
+
+
+--
+-- TOC entry 2146 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: personnes_id_personne_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('personnes_id_personne_seq', 1, false);
+
+
+--
+-- TOC entry 2136 (class 0 OID 24677)
+-- Dependencies: 188
+-- Data for Name: todo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY todo (id_todo, titre, description, date, fini, id_personne) FROM stdin;
+2	Lire un livre\n	Maria Chapdelaine	17/03/2017	0	2
+1	Faire la lessive\n	Linge Propre\n	20/12/2017	0	1
+3	grttrg	tgtrgr	gtgtgr	0	1
+5	mMl	htyh	htyhty	0	1
+8	Yolo	verv	20/17/111	0	2
+6	grtrtbrt	tgtrg	trbrtb	0	2
+16	ferfer	frfref	btbytyb	0	3
+\.
+
+
+--
+-- TOC entry 2147 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: todo_id_todo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('todo_id_todo_seq', 16, true);
+
+
+--
+-- TOC entry 2012 (class 2606 OID 24632)
+-- Name: personnes personnes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY personnes
+    ADD CONSTRAINT personnes_pkey PRIMARY KEY (id_personne);
+
+
+--
+-- TOC entry 2014 (class 2606 OID 24685)
+-- Name: todo todo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY todo
+    ADD CONSTRAINT todo_pkey PRIMARY KEY (id_todo);
+
+
+--
+-- TOC entry 2015 (class 2606 OID 32833)
+-- Name: todo foreign_key; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY todo
+    ADD CONSTRAINT foreign_key FOREIGN KEY (id_personne) REFERENCES personnes(id_personne) ON DELETE CASCADE;
+
+
+-- Completed on 2017-10-02 14:44:03
+
+--
+-- PostgreSQL database dump complete
+--
+
