@@ -1,9 +1,14 @@
 package ca.qc.cgmatane.informatique.devoirintegrite.modele;
 
+import java.sql.SQLException;
+
+import ca.qc.cgmatane.informatique.devoirintegrite.accesseur.PersonneDAO;
+import ca.qc.cgmatane.informatique.devoirintegrite.accesseur.TodoDAO;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 
 public class Personne {
     //Declaration

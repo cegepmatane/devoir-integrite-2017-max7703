@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ca.qc.cgmatane.informatique.devoirintegrite.modele.Personne;
+import ca.qc.cgmatane.informatique.devoirintegrite.modele.Todo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -142,5 +143,21 @@ public class PersonneDAO {
             }
             BaseDeDonnee.DeconnexionBDD();
         }
+    }
+    public static String listerPersonneTodo(int id) throws ClassNotFoundException, SQLException
+    {
+    	String Chaine;
+        //TEST donnée liée
+        Personne personne = lirePersonne(id);
+        ObservableList<Todo> listeTodo = TodoDAO.listerTousLesTodos();
+        Chaine = "Personne: " + personne.getPersonneNom();
+        for(Todo todo : listeTodo)
+        {
+        	if(todo.getIdPersonne() == personne.getPersonneId())
+        	{
+            	Chaine = Chaine + "\nTodo: " + todo.getTitre();
+            }
+        }
+		return Chaine;
     }
 }

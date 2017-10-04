@@ -6,9 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import java.sql.SQLException;
+
+import ca.qc.cgmatane.informatique.devoirintegrite.accesseur.PersonneDAO;
 import ca.qc.cgmatane.informatique.devoirintegrite.accesseur.TodoDAO;
+import ca.qc.cgmatane.informatique.devoirintegrite.modele.Personne;
 import ca.qc.cgmatane.informatique.devoirintegrite.modele.Todo;
 
 public class TodoControler {
@@ -29,6 +33,10 @@ public class TodoControler {
     private TextField descriptionTexte;
     @FXML
     private TextField idPersonneTexte;
+    @FXML
+    private TextField idPersonneTodoTexte;
+    @FXML
+    private TextArea personneTodo;
     @FXML
     private TextField dateTexte;
 	@SuppressWarnings("rawtypes")
@@ -97,5 +105,9 @@ public class TodoControler {
     @FXML
     private void effacerTodo (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         TodoDAO.effacerTodo(Integer.parseInt(idTodoTexte.getText()));
+    }
+    @FXML
+    private void listerPersonneTodo (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        personneTodo.setText(PersonneDAO.listerPersonneTodo(Integer.parseInt(idPersonneTodoTexte.getText())));
     }
 }

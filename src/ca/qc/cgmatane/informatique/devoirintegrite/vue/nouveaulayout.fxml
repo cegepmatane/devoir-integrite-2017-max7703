@@ -5,17 +5,18 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.qc.cgmatane.informatique.devoirintegrite.controler.TodoControler">
+<AnchorPane prefHeight="544.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.qc.cgmatane.informatique.devoirintegrite.controler.TodoControler">
    <children>
       <TextField fx:id="idTodoTexte" layoutX="193.0" layoutY="41.0" prefHeight="25.0" prefWidth="111.0" promptText="Todo ID" />
       <Label layoutX="227.0" layoutY="20.0" text="Todo ID" />
       <Button fx:id="RechercherTodoBouton" layoutX="190.0" layoutY="72.0" mnemonicParsing="false" onAction="#lireTodo" prefHeight="25.0" prefWidth="120.0" text="Rechercher" />
       <Button fx:id="SurprimerTodoBouton" layoutX="190.0" layoutY="103.0" mnemonicParsing="false" onAction="#effacerTodo" prefHeight="25.0" prefWidth="120.0" text="Supprimer" />
-      <Button fx:id="MettreAJourTodoBouton" layoutX="474.0" layoutY="103.0" mnemonicParsing="false" onAction="#modifierTodo" prefHeight="25.0" prefWidth="172.0" text="Mettre à jour" />
+      <Button fx:id="MettreAJourTodoBouton" layoutX="190.0" layoutY="132.0" mnemonicParsing="false" onAction="#modifierTodo" prefHeight="25.0" prefWidth="120.0" text="Mettre à jour" />
       <Button fx:id="ajouterTodoBouton" layoutX="8.0" layoutY="156.0" mnemonicParsing="false" onAction="#ajouterTodo" prefHeight="25.0" prefWidth="172.0" text="Ajouter Todo" />
       <TextField fx:id="nouveauTitre" layoutX="347.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" promptText="Nouveau Titre" />
       <Label layoutX="349.0" layoutY="31.0" text="Nouveau Titre" />
@@ -37,7 +38,7 @@
       </VBox>
       <Separator layoutY="14.0" prefHeight="4.0" prefWidth="600.0" />
       <Separator layoutX="184.0" layoutY="14.0" orientation="VERTICAL" prefHeight="178.0" prefWidth="3.0" />
-      <TableView fx:id="todoTable" editable="true" layoutX="187.0" layoutY="197.0" prefHeight="311.0" prefWidth="688.0" tableMenuButtonVisible="true">
+      <TableView fx:id="todoTable" editable="true" layoutX="283.0" layoutY="206.0" prefHeight="311.0" prefWidth="539.0" tableMenuButtonVisible="true">
         <columns>
             <TableColumn fx:id="idColonne" prefWidth="57.0" text="Id" />
           <TableColumn fx:id="titreColonne" prefWidth="75.0" text="Titre" />
@@ -47,14 +48,20 @@
             <TableColumn fx:id="finiColonne" prefWidth="56.0" text="Fini" />
         </columns>
       </TableView>
-      <Button fx:id="ActualiserTableBouton" layoutX="21.0" layoutY="287.0" mnemonicParsing="false" onAction="#listerTousLesTodos" prefHeight="98.0" prefWidth="147.0" text="Actualiser/Afficher table" />
-      <TextField fx:id="nouvelleIdPersonne" layoutX="608.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" promptText="Id Personne" />
+      <Button fx:id="ActualiserTableBouton" layoutX="60.0" layoutY="298.0" mnemonicParsing="false" onAction="#listerTousLesTodos" prefHeight="98.0" prefWidth="147.0" text="Actualiser/Afficher table" />
+      <TextField fx:id="nouvelleIdPersonne" layoutX="344.0" layoutY="113.0" prefHeight="25.0" prefWidth="120.0" promptText="Id Personne" />
       <TextField fx:id="nouvelleDescription" layoutX="474.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" promptText="Description" />
-      <TextField fx:id="nouvelleDate" layoutX="734.0" layoutY="51.0" prefHeight="25.0" prefWidth="120.0" promptText="Nouvelle Date" />
+      <TextField fx:id="nouvelleDate" layoutX="470.0" layoutY="113.0" prefHeight="25.0" prefWidth="120.0" promptText="Nouvelle Date" />
       <Label layoutX="474.0" layoutY="31.0" text="Nouvelle Description" />
-      <Label layoutX="608.0" layoutY="31.0" text="Nouveau Id Personne" />
-      <Label layoutX="740.0" layoutY="31.0" text="Nouvelle Date" />
+      <Label layoutX="344.0" layoutY="93.0" text="Nouveau Id Personne" />
+      <Label layoutX="476.0" layoutY="93.0" text="Nouvelle Date" />
       <Separator layoutX="314.0" layoutY="14.0" orientation="VERTICAL" prefHeight="178.0" prefWidth="3.0" />
-      <Separator layoutX="5.0" layoutY="192.0" prefHeight="4.0" prefWidth="868.0" />
+      <Separator layoutX="5.0" layoutY="192.0" prefHeight="4.0" prefWidth="1042.0" />
+      <Separator layoutX="597.0" layoutY="13.0" orientation="VERTICAL" prefHeight="178.0" prefWidth="3.0" />
+      <Separator layoutX="279.0" layoutY="14.0" prefHeight="4.0" prefWidth="766.0" />
+      <TextArea fx:id="personneTodo" layoutX="766.0" layoutY="19.0" prefHeight="168.0" prefWidth="271.0" />
+      <Button fx:id="afficherTodopers" layoutX="617.0" layoutY="103.0" mnemonicParsing="false" onAction="#listerPersonneTodo" prefHeight="25.0" prefWidth="120.0" text="Afficher Todo" />
+      <TextField fx:id="idPersonneTodoTexte" layoutX="621.0" layoutY="48.0" prefHeight="25.0" prefWidth="111.0" promptText="Personne Id" />
+      <Label layoutX="655.0" layoutY="27.0" text="Personne ID" />
    </children>
 </AnchorPane>
