@@ -7,7 +7,7 @@ public class BaseDeDonnee {
 
     public static Connection connexion = null;
 
-	public static String BASEDEDONNEES_URL = "jdbc:postgresql://localhost:5432/todo_database";
+	public static String BASEDEDONNEES_URL = "jdbc:postgresql://localhost:5432/test";
 	public static String BASEDEDONNEES_USAGER = "postgres";
 	public static String BASEDEDONNEES_MOTDEPASSE = "test";
 
